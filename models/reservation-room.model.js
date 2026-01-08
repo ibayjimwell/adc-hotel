@@ -8,7 +8,7 @@ import {
 import { Reservations } from "./reservation.model";
 import { Rooms } from "./rooms.model";
 
-export const ReservationRooms = pgTable("reservation_rooms", {
+export const ReservationRoom = pgTable("reservation_rooms", {
     id: serial("id").primaryKey(),
 
     reservationId: uuid("reservation_id")

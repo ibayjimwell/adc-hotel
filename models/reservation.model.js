@@ -7,7 +7,7 @@ import {
 import { Guests } from "./guests.model.js";
 import { ReservationStatusEnum } from "./enums/reservation-status.enum.js";
 
-export const Reservations = pgTable("reservations", {
+export const Reservation = pgTable("reservations", {
     id: uuid("id")
         .defaultRandom()
         .primaryKey(),
