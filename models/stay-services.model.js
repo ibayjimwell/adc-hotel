@@ -1,7 +1,8 @@
 import { 
     serial,
     uuid,
-    integer
+    integer,
+    pgTable
  } from "drizzle-orm/pg-core";
 
 import { Stays } from "./stays.model.js";

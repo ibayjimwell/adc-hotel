@@ -5,14 +5,14 @@ import {
     integer
  } from "drizzle-orm/pg-core";
 
-import { Reservations } from "./reservation.model";
-import { Rooms } from "./rooms.model";
+import { Reservation } from "./reservation.model.js";
+import { Rooms } from "./rooms.model.js";
 
 export const ReservationRoom = pgTable("reservation_rooms", {
     id: serial("id").primaryKey(),
 
     reservationId: uuid("reservation_id")
-        .references(() => Reservations.id)
+        .references(() => Reservation.id)
         .notNull(),
 
     roomId: integer("room_id")
