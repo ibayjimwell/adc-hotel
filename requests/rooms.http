@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:4000/api/v1
+@rooms = {{baseUrl}}/rooms
+
+
+### 
+# Create Room (Room Type ID must exist)
+POST {{rooms}}
+Content-Type: application/json
+
+{
+  "roomNumber": "101",
+  "roomTypeId": 1
+}
+
+
+### 
+# Create Another Room
+POST {{rooms}}
+Content-Type: application/json
+
+{
+  "roomNumber": "102",
+  "roomTypeId": 1
+}
+
+
+###
+# Create Family Room
+POST {{rooms}}
+Content-Type: application/json
+
+{
+  "roomNumber": "201",
+  "roomTypeId": 2
+}
+
+
+### 
+# Get All Rooms with Type Info
+GET {{rooms}}
+
+
+### 
+# Update Room Status (available | occupied | maintenance)
+PATCH {{rooms}}/1/status
+Content-Type: application/json
+
+{
+  "status": "occupied"
+}
+
+
+### 
+# Mark Room as Maintenance
+PATCH {{rooms}}/2/status
+Content-Type: application/json
+
+{
+  "status": "maintenance"
+}

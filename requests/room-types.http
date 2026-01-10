@@ -1,0 +1,44 @@
+@baseUrl = http://localhost:4000/api/v1
+@roomTypes = {{baseUrl}}/rooms/types
+
+
+### 
+# Create Room Type
+POST {{roomTypes}}
+Content-Type: application/json
+
+{
+  "name": "Deluxe Room",
+  "description": "Spacious room with balcony",
+  "basePrice": 3500.00,
+  "capacity": 2
+}
+
+
+### 
+# Create Another Room Type
+POST {{roomTypes}}
+Content-Type: application/json
+
+{
+  "name": "Family Room",
+  "description": "Large room for families",
+  "basePrice": 5500.00,
+  "capacity": 4
+}
+
+
+### 
+# Get All Room Types
+GET {{roomTypes}}
+
+
+### 
+# Update Room Type
+PUT {{roomTypes}}/1
+Content-Type: application/json
+
+{
+  "basePrice": 3800.00,
+  "capacity": 3
+}
