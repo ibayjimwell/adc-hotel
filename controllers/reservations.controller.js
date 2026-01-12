@@ -21,7 +21,7 @@ export const createReservation = async (req, res, next) => {
       });
     }
 
-    // ✅ Convert ONCE
+    // Convert date into Date object
     const checkin = new Date(checkinDate);
     const checkout = new Date(checkoutDate);
 
@@ -123,7 +123,7 @@ export const createReservation = async (req, res, next) => {
 };
 
 // Reservations Listing
-export const getReservations = async (req, res) => {
+export const getReservations = async (req, res, next) => {
   try {
     const result = await Database
       .select()
@@ -132,12 +132,12 @@ export const getReservations = async (req, res) => {
     res.json(result);
   } catch (error) {
     console.error(error);
-      return new Error("Failed to fetch reservations.");
+      return next(new Error(error.message));
   }
 };
 
 // Cancel Reservation
-export const cancelReservation = async (req, res) => {
+export const cancelReservation = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -163,6 +163,6 @@ export const cancelReservation = async (req, res) => {
       data: reservation,
     });
   } catch (error) {
-      return new Error("Failed to cancel reservation.");
+      return next(new Error(error.message));
   }
 };

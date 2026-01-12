@@ -3,7 +3,7 @@ import { Rooms, RoomTypes } from "../models/index.js";
 import { eq } from "drizzle-orm";
 
 // Creating room
-export const createRoom = async (req, res) => {
+export const createRoom = async (req, res, next) => {
   try {
     const { roomNumber, roomTypeId } = req.body;
 
@@ -47,13 +47,13 @@ export const createRoom = async (req, res) => {
         message: `Room ${roomNumber} created.`,
         data: room
     });
-  } catch (err) {
-      return new Error("Failed to create room.");
+  } catch (error) {
+      return next(new Error(error.message));
   }
 };
 
 // Room listing with it's type
-export const getRooms = async (req, res) => {
+export const getRooms = async (req, res, next) => {
     try {
         // Query for listing room with it's type
         const result = await Database
@@ -70,8 +70,8 @@ export const getRooms = async (req, res) => {
 
         // Returning the rooms
         res.json(result);
-  } catch (err) {
-        return new Error("Failed to list rooms.");
+  } catch (error) {
+        return next(new Error(error.message));
     }
 };
 
@@ -94,7 +94,7 @@ export const updateRoomStatus = async (req, res) => {
         message: `Room status updated to ${status}.`,
         data: room
     });
-  } catch (err) {
-      return new Error("Failed to update room status.");
+  } catch (error) {
+      return next(new Error(error.message));
   }
 };

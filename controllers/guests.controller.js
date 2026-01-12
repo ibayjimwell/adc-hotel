@@ -1,10 +1,9 @@
-import { success } from "zod";
 import { Database } from "../database/drizzle.js";
 import { Guests } from "../models/index.js";
 import { eq, ilike, or } from "drizzle-orm";
 
 // Creating Guest
-export const createGuest = async (req, res) => {
+export const createGuest = async (req, res, next) => {
     try {
         const {
             firstName,
@@ -88,12 +87,12 @@ export const createGuest = async (req, res) => {
         });
 
     } catch (error) {
-        return new Error("Failed to create guest");
+        return next(new Error(error.message));
     }
 }
 
 // Get all Guest
-export const getGuests = async (req, res) => {
+export const getGuests = async (req, res, next) => {
   try {
     const { search } = req.query;
 
@@ -117,13 +116,13 @@ export const getGuests = async (req, res) => {
         data: result
     });
       
-  } catch (err) {
-        return new Error("Failed to load guests.");
+  } catch (error) {
+        return next(new Error(error.message));
   }
 };
 
 // Get Single Guest
-export const getGuestById = async (req, res) => {
+export const getGuestById = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -148,13 +147,13 @@ export const getGuestById = async (req, res) => {
           data: guest
       });
       
-  } catch (err) {
-        return new Error("Failed to load guest.");
+  } catch (error) {
+        return next(new Error(error.message));
   }
 };
 
 // Update Guest
-export const updateGuest = async (req, res) => {
+export const updateGuest = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -172,7 +171,7 @@ export const updateGuest = async (req, res) => {
           message: `Guest ${req.body.firstName} ${req.body.lastName} updated.`
       });
       
-  } catch (err) {
-        return new Error("Failed to update guest.");
+  } catch (error) {
+        return next(new Error(error.message));
   }
 };
