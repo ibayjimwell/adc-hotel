@@ -4,6 +4,8 @@ import roomTypeRoutes from "./room-types.route.js";
 import roomRoutes from "./rooms.route.js";
 import stayRoutes from "./stays.route.js";
 import reservationRoutes from "./reservations.route.js";
+import serviceRoutes from "./services.route.js";
+import stayServiceRoutes from "./stay-services.route.js";
 
 const router = Router();
 
@@ -12,5 +14,7 @@ router.use("/rooms/types", roomTypeRoutes);
 router.use("/rooms", roomRoutes);
 router.use("/stays", stayRoutes);
 router.use("/reservations", reservationRoutes);
+router.use("/services", serviceRoutes);
+router.use("/stays", stayServiceRoutes);
 
 export default router;

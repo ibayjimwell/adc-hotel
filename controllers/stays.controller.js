@@ -123,13 +123,14 @@ export const checkOut = async (req, res, next) => {
     }
 
     // Update stay
-    await Database
+    const [updatedStay] = await Database
       .update(Stays)
       .set({
         checkoutAt: checkoutDate,
         status: "completed",
       })
-      .where(eq(Stays.id, stayId));
+      .where(eq(Stays.id, stayId))
+      .returning();
 
     // Release room
     await Database
@@ -141,6 +142,7 @@ export const checkOut = async (req, res, next) => {
     return res.json({
       success: true,
       message: "Guest checked out successfully.",
+      data: updatedStay
     });
 
   } catch (error) {
