@@ -1,0 +1,28 @@
+@baseUrl = http://localhost:4000/api/v1
+@stays = {{baseUrl}}/stays
+
+# Replace {{stayId}} and {{serviceId}} with real values
+
+### 
+# Add Service to Stay
+POST {{stays}}/33324fd1-79bd-49fc-be56-b41d1d7f7926/services
+Content-Type: application/json
+
+{
+  "serviceId": 1,
+  "quantity": 2
+}
+
+### 
+# Add Another Service to Stay
+POST {{stays}}/33324fd1-79bd-49fc-be56-b41d1d7f7926/services
+Content-Type: application/json
+
+{
+  "serviceId": 2,
+  "quantity": 1
+}
+
+### 
+# List Services for a Stay
+GET {{stays}}/33324fd1-79bd-49fc-be56-b41d1d7f7926/services

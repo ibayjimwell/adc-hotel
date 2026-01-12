@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
   "guestId": "4b23f23a-4e13-4387-90ad-b27f3c9d2471",
-  "roomId": 3,
+  "roomId": 7,
   "checkinAt": "2026-01-10T14:00:00"
 }
 

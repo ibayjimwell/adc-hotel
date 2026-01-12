@@ -8,7 +8,7 @@ POST {{rooms}}
 Content-Type: application/json
 
 {
-  "roomNumber": "101",
+  "roomNumber": "105",
   "roomTypeId": 1
 }
 
