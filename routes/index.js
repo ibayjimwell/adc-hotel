@@ -8,6 +8,7 @@ import serviceRoutes from "./services.route.js";
 import stayServiceRoutes from "./stay-services.route.js";
 import invoiceRoutes from "./invoices.route.js";
 import paymentRoutes from "./payments.route.js";
+import staffRoutes from "./staff.route.js";
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use("/services", serviceRoutes);
 router.use("/stays", stayServiceRoutes);
 router.use("/invoices", invoiceRoutes);
 router.use("/payments", paymentRoutes);
+router.use("/staff", staffRoutes);
 
 export default router;
