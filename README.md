@@ -211,4 +211,4 @@ http://localhost:4000
 # 👨‍💻 Author
 
 **Jimwell Ibay**
-- Developer and Maintainer
+- Creator & Maintainer
